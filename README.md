@@ -98,6 +98,58 @@ make && make install
 ### 【swoole】
 ./configure --enable-openssl --with-openssl-dir=/usr/local/openssl  --with-php-config=/usr/local/php74/bin/php-config
 
+### 【gd】
+tar -zxvf libzip-1.2.0.tar.gz \
+cd libzip-1.2.0 \
+./configure \
+make \
+make install
+
+tar -xzvf libgd-2.2.3.tar.gz \
+cd libgd-2.2.3 \
+./configure --enable-shared \
+make \
+make install \
+make clean \
+make distclean
+
+tar -xzvf zlib-1.2.12.tar.gz \
+cd zlib-1.2.12 \
+./configure --prefix=/usr/local/zlib --enable-shared \
+make \
+make install
+
+tar -xzvf freetype-2.10.1.tar.gz \
+cd freetype-2.10.1\
+./configure --prefix=/usr/local/freetype --enable-shared \
+make \
+make install
+
+tar -xzvf libpng-1.6.31.tar.gz \
+cd libpng-1.6.31 \
+./configure --prefix=/usr/local/libpng --enable-shared \
+make \
+make install
+
+tar -xzvf jpegsrc.v9d.tar.gz \
+cd jpeg-9d \
+./configure --prefix=/usr/local/libjpeg --enable-shared \
+make \
+make install
+
+cd php7.4
+./configure \
+--enable-gd \
+--with-php-config=/usr/local/php74/bin/php-config \
+--with-jpeg=/usr/local/libjpeg \
+--with-freetype=/usr/local/freetype \
+make && make install
+
+### 【zip】
+cd php7.4
+./configure \
+--with-php-config=/usr/local/php74/bin/php-config
+make && make install
 
 ### 【更新gcc】
 tar -jxvf gcc-4.8.2.tar.bz2
